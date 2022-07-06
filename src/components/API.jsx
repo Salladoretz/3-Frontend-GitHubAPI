@@ -6,31 +6,31 @@ import css from './API.module.css'
 const API = () => {
 
     const [search, setSearch] = useState('')
+    const [status, setStatus] = useState('')
     const [results, setResults] = useState([])
     const [totalCount, setTotalCount] = useState('')
-    console.log(search)
 
     async function getRepositories() {
         const response = await axios.get(`https://api.github.com/search/repositories?q=${search}&order=asc&per_page=10`)
+        setStatus(response.status)
         let listRepositories = response.data.items.map(item => {
             return {
                 id: item.id,
                 name: item.name,
                 description: item.description,
                 owner: item.owner.login,
-                created_at: item.created_at,
+                created_at: new Date(item.created_at),
                 link: item.html_url
             }
         })
         setResults(listRepositories)
         setTotalCount(response.data.total_count)
-        console.log(response.data)
     }
 
     return (
-        <div>
-            <h1>Поиск на GitHub</h1>
-            <div className={css.search}>
+        <div className={css.main}>
+            <fieldset className={css.search}>
+                <legend>Поиск на GitHub</legend>
                 <input
                     className={css.search__input}
                     type="text"
@@ -45,9 +45,10 @@ const API = () => {
                 >
                     Поиск
                 </button>
-            </div>
+            </fieldset>
             <fieldset className={css.results}>
                 <legend>Список репозиториев</legend>
+                {status === '' || status === 200 ? '' : <p className={css.results__error}>Что-то пошло не так!</p>}
                 {results.map(item =>
                     <div
                         className={css.results__item}
@@ -63,13 +64,15 @@ const API = () => {
                         </div>
                         <div className={css.results__description}>{item.description}</div>
                         <div className={css.results__owner}>{item.owner}</div>
-                        <div className={css.results__created}>{item.created_at}</div>
+                        <div className={css.results__created}>{item.created_at.toLocaleString('ru-RU')}</div>
                     </div>)}
             </fieldset>
-            <div className={css.count}>
-                <p>Всего репозиториев</p>
-                {totalCount}
-            </div>
+            <fieldset className={css.count}>
+                <legend>Всего репозиториев</legend>
+                <p className={css.count__total}>
+                    {totalCount.toLocaleString('ru-RU')}
+                </p>
+            </fieldset>
         </div>
     )
 }
