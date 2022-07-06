@@ -1,0 +1,56 @@
+h1 {
+    text-align: center;
+}
+
+.search {
+    display: flex;
+    margin-top: 2rem;
+    border: thick double #8de4f0;
+    padding: 1rem;
+    border-radius: 10px;
+    min-width: 360px;
+    gap: 1rem;
+}
+
+.search__input {
+    padding: 1rem;
+    border: 1px solid #8de4f0;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.search__button {
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    background: white;
+    color: #0890a1;
+}
+
+.results {
+    padding: 10px;
+    margin: 20px;
+}
+
+.results__item {
+    display: flex;
+    padding: 5px;
+}
+
+.results__name {
+    width: 150px;
+}
+
+.results__description {
+    width: 300px;
+}
+
+.results__owner {
+    width: 100px;
+}
+
+.results__created {
+    width: 200px;
+}
