@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/3-Frontend-GitHubAPI/static/css/main.79d227f5.css",
+    "main.js": "/3-Frontend-GitHubAPI/static/js/main.a9f9bb66.js",
+    "index.html": "/3-Frontend-GitHubAPI/index.html",
+    "main.79d227f5.css.map": "/3-Frontend-GitHubAPI/static/css/main.79d227f5.css.map",
+    "main.a9f9bb66.js.map": "/3-Frontend-GitHubAPI/static/js/main.a9f9bb66.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.79d227f5.css",
+    "static/js/main.a9f9bb66.js"
+  ]
+}
