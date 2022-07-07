@@ -52,6 +52,10 @@ legend {
     color: red;
 }
 
+.results__empty {
+    text-align: center;
+}
+
 .results__item {
     display: flex;
 }

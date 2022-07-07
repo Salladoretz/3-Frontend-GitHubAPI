@@ -11,7 +11,7 @@ const API = () => {
     const [totalCount, setTotalCount] = useState('')
 
     async function getRepositories() {
-        const response = await axios.get(`https://api.github.com/search/repositories?q=${search}&order=asc&per_page=10`)
+        const response = await axios.get(`https://api.github.com/search/repositories?q=${search}&order=desc&per_page=10`)
         setStatus(response.status)
         let listRepositories = response.data.items.map(item => {
             return {
@@ -49,6 +49,7 @@ const API = () => {
             <fieldset className={css.results}>
                 <legend>Список репозиториев</legend>
                 {status === '' || status === 200 ? '' : <p className={css.results__error}>Что-то пошло не так!</p>}
+                {results.length === 0 ? <p className={css.results__empty}>Список пуст</p> : ''}
                 {results.map(item =>
                     <div
                         className={css.results__item}
